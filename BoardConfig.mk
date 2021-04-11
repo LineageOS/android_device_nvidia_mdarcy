@@ -15,3 +15,9 @@
 #
 
 include device/nvidia/foster/BoardConfig.mk
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := mdarcy,sif
+
+# Bootloader versions
+TARGET_BOARD_INFO_FILE := device/nvidia/mdarcy/board-info.txt
