@@ -30,3 +30,6 @@ TARGET_BOARD_INFO_FILE := device/nvidia/mdarcy/board-info.txt
 BOARD_CUSTOM_BOOTIMG    := true
 BOARD_CUSTOM_BOOTIMG_MK := device/nvidia/mdarcy/mkbootimg.mk
 BOARD_MKBOOTIMG_ARGS    := --header_version 1
+
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/nvidia/mdarcy/releasetools
