@@ -19,7 +19,7 @@ LOCAL_PATH := $(call my-dir)
 INSTALLED_DTBIMAGE_TARGET_mdarcy_recovery := $(PRODUCT_OUT)/mdarcy_recovery.dtb.img
 $(INSTALLED_DTBIMAGE_TARGET_mdarcy_recovery): $(INSTALLED_KERNEL_TARGET) | mkdtimg
 	echo -e ${CL_GRN}"Building mdarcy recovery DTImage"${CL_RST}
-	mkdtimg create $@ \
+	$(HOST_OUT_EXECUTABLES)/mkdtimg create $@ \
 		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210b01-darcy-p2894-0050-a08-00.dtb --id=2894 --rev=0x0a8 --custom0=0x28  \
 		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210b01-darcy-p2894-2551-b00-00.dtb --id=2894 --rev=0xb00 --custom0=2551  \
 		$(KERNEL_OUT)/arch/arm64/boot/dts/tegra210b01-darcy-p2894-3551-b03-00.dtb --id=2894 --rev=0xb03 --custom0=3551  \
