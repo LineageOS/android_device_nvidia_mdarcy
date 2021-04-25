@@ -33,8 +33,6 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(BOOTIM
 	$(hide) $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_ARGS) $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $@
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_BOOTIMAGE_PARTITION_SIZE))
 
-$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(recovery_ramdisk) $(recovery_kernel) $(INSTALLED_DTBIMAGE_TARGET_mdarcy_recovery) \
-	$(RECOVERYIMAGE_EXTRA_DEPS)
-	@echo ----- Making recovery image ------
-	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_MKBOOTIMG_ARGS) --recovery_dtbo $(INSTALLED_DTBIMAGE_TARGET_mdarcy_recovery) --output $@ --id > $(RECOVERYIMAGE_ID_FILE)
-	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE))
+INTERNAL_RECOVERYIMAGE_ARGS += --recovery_dtbo $(INSTALLED_DTBIMAGE_TARGET_mdarcy_recovery)
+$(INSTALLED_RECOVERYIMAGE_TARGET): $(recoveryimage-deps) $(RECOVERYIMAGE_EXTRA_DEPS) $(INSTALLED_DTBIMAGE_TARGET_mdarcy_recovery)
+	$(call build-recoveryimage-target, $@, $(recovery_kernel))
