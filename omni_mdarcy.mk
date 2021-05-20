@@ -14,7 +14,12 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_mdarcy.mk \
-    $(LOCAL_DIR)/lineage_mdarcy.mk \
-    $(LOCAL_DIR)/omni_mdarcy.mk
+# Inherit some common omni stuff.
+$(call inherit-product, vendor/omni/config/common.mk)
+
+# Inherit device configuration for mdarcy.
+include device/nvidia/foster/omni.mk
+$(call inherit-product, device/nvidia/mdarcy/full_mdarcy.mk)
+
+PRODUCT_NAME := omni_mdarcy
+PRODUCT_DEVICE := mdarcy
