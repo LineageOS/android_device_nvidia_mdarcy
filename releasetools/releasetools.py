@@ -22,6 +22,7 @@ import os
 APP_PART     = '/dev/block/by-name/APP'
 DTB_PART     = '/dev/block/by-name/DTB'
 STAGING_PART = '/dev/block/by-name/USP'
+VBMETA_PART  = '/dev/block/by-name/vbmeta'
 VENDOR_PART  = '/dev/block/by-name/vendor'
 
 PUBLIC_KEY_PATH     = '/sys/devices/7000f800.efuse/7000f800.efuse:efuse-burn/public_key'
@@ -194,3 +195,4 @@ def AddBootloaderFlash(info, input_zip):
 
   info.script.AppendExtra('  )')
   info.script.AppendExtra(');')
+  info.script.AppendExtra('package_extract_file("install/vbmeta_skip.img", "' + VBMETA_PART + '");')
