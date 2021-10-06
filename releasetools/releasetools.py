@@ -105,7 +105,7 @@ def AddBootloaderFlash(info, input_zip):
   info.script.AppendExtra('          ),')
   """ darcy """
   info.script.AppendExtra('          (')
-  info.script.AppendExtra('            ui_print("Darcy is not supported in this build.");')
+  info.script.AppendExtra('            ui_print("Darcy is not supported in this build. Please install a `foster` build instead.");')
   info.script.AppendExtra('            abort();')
   info.script.AppendExtra('          )')
   info.script.AppendExtra('        )')
@@ -166,7 +166,7 @@ def AddBootloaderFlash(info, input_zip):
   info.script.AppendExtra('          ),')
   """ darcy """
   info.script.AppendExtra('          (')
-  info.script.AppendExtra('            ui_print("Darcy is not supported in this build.");')
+  info.script.AppendExtra('            ui_print("Darcy is not supported in this build. Please install a `foster` build instead.");')
   info.script.AppendExtra('            abort();')
   info.script.AppendExtra('          )')
   info.script.AppendExtra('        )')
