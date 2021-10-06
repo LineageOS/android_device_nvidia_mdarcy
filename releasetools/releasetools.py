@@ -36,7 +36,14 @@ MDARCY_PUBLIC_KEY   = '0xc5ae4221f0f4f5113c0271b3519cac7f0bcb0cb860381a4648e9eee
 SIF_PUBLIC_KEY      = '0x26646fe375375e39410853f75e59e2c4ca8440926fa37604a280b5c8a25a2c3e\n'
 DARCY_BL_VERSION    = '32.00.2019.50-t210-79558a05'
 
+def AddImage(info, basename, dest):
+  name = basename
+  data = info.input_zip.read("IMAGES/" + basename)
+  common.ZipWriteStr(info.output_zip, name, data)
+  info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
+
 def FullOTA_PostValidate(info):
+  AddImage(info, "vbmeta.img", "/dev/block/by-name/vbmeta")
   if 'INSTALL/bin/resize2fs_static' in info.input_zip.namelist():
     info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + APP_PART + '");');
     info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + VENDOR_PART + '");');
