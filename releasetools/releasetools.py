@@ -37,6 +37,7 @@ SIF_PUBLIC_KEY      = '0x26646fe375375e39410853f75e59e2c4ca8440926fa37604a280b5c
 DARCY_BL_VERSION    = '32.00.2019.50-t210-79558a05'
 
 def FullOTA_PostValidate(info):
+  AddImage(info, "vbmeta.img", "/dev/block/by-name/vbmeta")
   if 'INSTALL/bin/resize2fs_static' in info.input_zip.namelist():
     info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + APP_PART + '");');
     info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "' + VENDOR_PART + '");');
