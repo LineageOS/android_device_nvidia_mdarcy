@@ -35,7 +35,7 @@ MODE_FUSED          = '0x00000001\n'
 DARCY_PUBLIC_KEY    = '0x435a807e9187c53eae50e2dcab521e0ea41458a9b18d31db553ceb711c21fb52\n'
 MDARCY_PUBLIC_KEY   = '0xc5ae4221f0f4f5113c0271b3519cac7f0bcb0cb860381a4648e9eee350e97f89\n'
 SIF_PUBLIC_KEY      = '0x26646fe375375e39410853f75e59e2c4ca8440926fa37604a280b5c8a25a2c3e\n'
-DARCY_BL_VERSION    = '32.00.2019.50-t210-79558a05'
+DARCY_BL_VERSION    = '32.00.2019.50-t210-69ebfcbe'
 
 def FullOTA_PostValidate(info):
   if 'INSTALL/bin/resize2fs_static' in info.input_zip.namelist():
